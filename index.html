@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Porr4_kayc | Links</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -16,35 +16,35 @@
             align-items: center; 
             min-height: 100vh; 
             margin: 0; 
-            padding: 20px;
+            padding: 15px;
         } 
 
         .container { 
             width: 100%; 
-            max-width: 500px; /* Aumentado para preencher mais a tela */
+            max-width: 380px; /* Reduzi a largura máxima para concentrar o conteúdo */
             text-align: center; 
         } 
 
         .profile-pic { 
-            width: 160px; /* Bem maior agora */
-            height: 160px; 
+            width: 110px; /* Tamanho médio ideal */
+            height: 110px; 
             border-radius: 50%; 
-            border: 5px solid #58a6ff; 
-            margin-bottom: 25px; 
+            border: 3px solid #58a6ff; 
+            margin-bottom: 15px; 
             object-fit: cover; 
             display: block; 
             margin-left: auto; 
             margin-right: auto; 
             background-color: #30363d; 
-            box-shadow: 0 0 30px rgba(88, 166, 255, 0.4); 
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.2); 
         } 
 
         h1 { 
-            font-size: 2.2rem; /* Fonte bem grande e visível */
+            font-size: 1.4rem; /* Reduzi o título para não dominar a tela */
             color: #ffffff; 
-            margin-bottom: 40px; 
-            font-weight: 900; 
-            letter-spacing: -1px;
+            margin-bottom: 25px; 
+            font-weight: 700; 
+            letter-spacing: -0.5px;
         } 
 
         .link-button { 
@@ -54,33 +54,35 @@
             background-color: #161b22; 
             color: #ffffff; 
             text-decoration: none; 
-            padding: 22px; /* Botões muito mais altos e fáceis de clicar */
-            margin-bottom: 18px; 
-            border: 2px solid #30363d; /* Borda mais grossa */
-            border-radius: 18px; /* Cantos mais arredondados e modernos */
-            transition: all 0.2s ease-in-out; 
-            font-weight: 700; 
-            font-size: 1.2rem; /* Texto do link aumentado */
+            padding: 16px; /* Voltei para um toque mais elegante e menos "pesado" */
+            margin-bottom: 12px; 
+            border: 1px solid #30363d; 
+            border-radius: 12px; 
+            transition: all 0.2s ease; 
+            font-weight: 600; 
+            font-size: 1rem; /* Tamanho de texto padrão */
             width: 100%;
             box-sizing: border-box;
         } 
 
         .link-button i { 
-            margin-right: 15px; 
-            font-size: 1.5rem; /* Ícones maiores */
-            width: 30px; 
+            margin-right: 12px; 
+            font-size: 1.2rem; 
+            width: 25px; 
             text-align: center; 
         } 
 
-        .link-button:active { 
-            transform: scale(0.96); /* Efeito de clique real no celular */
-        }
-
-        /* Cores de destaque no hover/foco */ 
+        /* Efeitos de cores suaves */ 
         .yt-hover:hover { background-color: #FF0000; border-color: #FF0000; } 
         .dc-hover:hover { background-color: #5865F2; border-color: #5865F2; } 
         .gh-hover:hover { background-color: #238636; border-color: #2ea043; } 
         .em-hover:hover { background-color: #58a6ff; border-color: #58a6ff; } 
+        
+        /* Feedback visual ao tocar no celular */
+        .link-button:active {
+            transform: scale(0.98);
+            background-color: #1f242c;
+        }
     </style>
 </head>
 <body>
