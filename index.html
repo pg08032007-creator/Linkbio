@@ -2,95 +2,85 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Porr4_kayc | Links</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* Base e Reset para precisão */
         body { 
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: #0d1117; /* Preto absoluto do fundo */
-            color: #ffffff; 
+            background-color: #0d1117; 
+            color: #c9d1d9; 
             display: flex; 
             justify-content: center; 
-            align-items: center; /* Centraliza verticalmente na tela */
+            align-items: center; 
             min-height: 100vh; 
             margin: 0; 
-            padding: 0;
-            overflow: hidden; /* Evita scroll desnecessário */
+            padding: 15px;
         } 
 
         .container { 
-            width: 330px; /* Largura exata medida na imagem */
+            width: 100%; 
+            max-width: 380px; /* Reduzi a largura máxima para concentrar o conteúdo */
             text-align: center; 
-            padding-bottom: 50px; /* Compensa a centralização vertical para subir um pouco */
         } 
 
         .profile-pic { 
-            width: 140px; /* Medida exata do círculo azul */
-            height: 140px; 
+            width: 110px; /* Tamanho médio ideal */
+            height: 110px; 
             border-radius: 50%; 
-            border: 4px solid #58a6ff; /* Borda azul vibrante */
-            margin-bottom: 25px; /* Espaço até o nome */
+            border: 3px solid #58a6ff; 
+            margin-bottom: 15px; 
             object-fit: cover; 
             display: block; 
             margin-left: auto; 
             margin-right: auto; 
-            box-shadow: 0 0 25px rgba(88, 166, 255, 0.4); /* Glow mais visível */
+            background-color: #30363d; 
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.2); 
         } 
 
         h1 { 
-            font-size: 2.1rem; /* Tamanho do nome @Porr4_kayc */
+            font-size: 1.4rem; /* Reduzi o título para não dominar a tela */
             color: #ffffff; 
-            margin-bottom: 5px; 
+            margin-bottom: 25px; 
             font-weight: 700; 
-            letter-spacing: -1px;
-            text-decoration: underline; /* Linha embaixo do nome como na foto */
-            text-underline-offset: 8px; /* Espaço da linha para o texto */
+            letter-spacing: -0.5px;
         } 
-
-        .divider {
-            height: 1px; /* Linha divisória fina */
-            background-color: #30363d; /* Cinza escuro */
-            margin: 15px auto 40px; /* Espaço grande até o primeiro botão */
-            width: 75%; /* Não ocupa toda a largura */
-        }
 
         .link-button { 
             display: flex; 
-            align-items: center; /* Centraliza verticalmente o conteúdo interno */
-            background-color: #161b22; /* Fundo do card */
+            align-items: center; 
+            justify-content: center; 
+            background-color: #161b22; 
             color: #ffffff; 
             text-decoration: none; 
-            height: 100px; /* Altura fixa para manter o botão "quadrado" */
-            padding: 0 25px; /* Espaçamento horizontal */
-            margin-bottom: 15px; /* Espaço entre botões */
+            padding: 16px; /* Voltei para um toque mais elegante e menos "pesado" */
+            margin-bottom: 12px; 
             border: 1px solid #30363d; 
-            border-radius: 20px; /* Bordas arredondadas exatas */
+            border-radius: 12px; 
             transition: all 0.2s ease; 
+            font-weight: 600; 
+            font-size: 1rem; /* Tamanho de texto padrão */
             width: 100%;
             box-sizing: border-box;
         } 
 
         .link-button i { 
-            font-size: 2.2rem; /* Ícones grandes e pesados */
-            width: 70px; /* Espaço reservado para o ícone alinhar à esquerda */
-            text-align: left;
+            margin-right: 12px; 
+            font-size: 1.2rem; 
+            width: 25px; 
+            text-align: center; 
         } 
 
-        .button-text {
-            flex-grow: 1; /* Ocupa o restante do espaço */
-            font-size: 1.2rem; /* Tamanho do texto */
-            font-weight: 600;
-            line-height: 1.25; /* Espaçamento entre as duas linhas de texto */
-            text-align: center; /* Texto centralizado */
-            padding-right: 40px; /* Compensa o espaço do ícone para centralizar o texto */
-        }
-
-        /* Efeito de clique */
+        /* Efeitos de cores suaves */ 
+        .yt-hover:hover { background-color: #FF0000; border-color: #FF0000; } 
+        .dc-hover:hover { background-color: #5865F2; border-color: #5865F2; } 
+        .gh-hover:hover { background-color: #238636; border-color: #2ea043; } 
+        .em-hover:hover { background-color: #58a6ff; border-color: #58a6ff; } 
+        
+        /* Feedback visual ao tocar no celular */
         .link-button:active {
-            transform: scale(0.96);
+            transform: scale(0.98);
             background-color: #1f242c;
         }
     </style>
@@ -101,26 +91,21 @@
     <img src="IMG_20260326_064921_114.jpg" alt="Foto de Perfil" class="profile-pic">
 
     <h1>@Porr4_kayc</h1>
-    <div class="divider"></div>
 
-    <a href="mailto:Christopherkayc74@gmail.com" class="link-button">
-        <i class="fas fa-envelope"></i>
-        <span class="button-text">E-mail para<br>Contato</span>
+    <a href="mailto:Christopherkayc74@gmail.com" class="link-button em-hover">
+        <i class="fas fa-envelope"></i> E-mail para Contato
     </a>
 
-    <a href="https://youtube.com/@kaldim244?si=PaFHzbLobG9wnPyI" target="_blank" class="link-button">
-        <i class="fab fa-youtube"></i>
-        <span class="button-text">Canal no<br>YouTube</span>
+    <a href="https://youtube.com/@kaldim244?si=PaFHzbLobG9wnPyI" target="_blank" class="link-button yt-hover">
+        <i class="fab fa-youtube"></i> Canal no YouTube
     </a>
 
-    <a href="https://discord.gg/gmsyfGggup" target="_blank" class="link-button">
-        <i class="fab fa-discord"></i>
-        <span class="button-text">Servidor no<br>Discord</span>
+    <a href="https://discord.gg/gmsyfGggup" target="_blank" class="link-button dc-hover">
+        <i class="fab fa-discord"></i> Servidor no Discord
     </a>
 
-    <a href="https://pg08032007-creator.github.io/Portf-lio-/" target="_blank" class="link-button">
-        <i class="fab fa-github"></i>
-        <span class="button-text">Meus Projetos</span>
+    <a href="https://pg08032007-creator.github.io/Portf-lio-/" target="_blank" class="link-button gh-hover">
+        <i class="fab fa-github"></i> Meus Projetos
     </a>
 </div>
 
