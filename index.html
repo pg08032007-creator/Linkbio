@@ -16,33 +16,33 @@
             align-items: center; 
             min-height: 100vh; 
             margin: 0; 
-            padding: 15px;
+            padding: 20px;
         } 
 
         .container { 
             width: 100%; 
-            max-width: 380px; /* Reduzi a largura máxima para concentrar o conteúdo */
+            max-width: 420px; /* Aumentei levemente */
             text-align: center; 
         } 
 
         .profile-pic { 
-            width: 110px; /* Tamanho médio ideal */
-            height: 110px; 
+            width: 130px; /* maior igual segunda imagem */
+            height: 130px; 
             border-radius: 50%; 
-            border: 3px solid #58a6ff; 
-            margin-bottom: 15px; 
+            border: 4px solid #58a6ff; 
+            margin-bottom: 18px; 
             object-fit: cover; 
             display: block; 
             margin-left: auto; 
             margin-right: auto; 
             background-color: #30363d; 
-            box-shadow: 0 0 15px rgba(88, 166, 255, 0.2); 
+            box-shadow: 0 0 25px rgba(88, 166, 255, 0.35); 
         } 
 
         h1 { 
-            font-size: 1.4rem; /* Reduzi o título para não dominar a tela */
+            font-size: 1.8rem; /* maior */
             color: #ffffff; 
-            margin-bottom: 25px; 
+            margin-bottom: 30px; 
             font-weight: 700; 
             letter-spacing: -0.5px;
         } 
@@ -54,33 +54,39 @@
             background-color: #161b22; 
             color: #ffffff; 
             text-decoration: none; 
-            padding: 16px; /* Voltei para um toque mais elegante e menos "pesado" */
-            margin-bottom: 12px; 
+            padding: 20px; /* MAIS ALTO (principal mudança) */
+            margin-bottom: 18px; /* mais espaçamento entre botões */
             border: 1px solid #30363d; 
-            border-radius: 12px; 
-            transition: all 0.2s ease; 
+            border-radius: 16px; /* mais arredondado estilo segunda imagem */
+            transition: all 0.25s ease; 
             font-weight: 600; 
-            font-size: 1rem; /* Tamanho de texto padrão */
+            font-size: 1.1rem; /* texto maior */
             width: 100%;
             box-sizing: border-box;
         } 
 
         .link-button i { 
-            margin-right: 12px; 
-            font-size: 1.2rem; 
-            width: 25px; 
+            margin-right: 14px; 
+            font-size: 1.3rem; 
+            width: 28px; 
             text-align: center; 
         } 
 
-        /* Efeitos de cores suaves */ 
+        /* Efeito HOVER mais moderno */
+        .link-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Efeitos de cores */ 
         .yt-hover:hover { background-color: #FF0000; border-color: #FF0000; } 
         .dc-hover:hover { background-color: #5865F2; border-color: #5865F2; } 
         .gh-hover:hover { background-color: #238636; border-color: #2ea043; } 
         .em-hover:hover { background-color: #58a6ff; border-color: #58a6ff; } 
         
-        /* Feedback visual ao tocar no celular */
+        /* Feedback mobile */
         .link-button:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
             background-color: #1f242c;
         }
     </style>
