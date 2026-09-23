@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdo Exclusivo VIP</title>
+    <!-- Fonte moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0914;
+            --card-bg: #161224;
+            --purple-main: #8a2be2;
+            --purple-gradient: linear-gradient(135deg, #a855f7 0%, #6b21a8 100%);
+            --purple-glow: rgba(168, 85, 247, 0.4);
+            --text-color: #ffffff;
+            --text-secondary: #9ca3af;
+            --border-color: #272038;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px 15px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Header / Navbar */
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0 25px;
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-icon span {
+            width: 24px;
+            height: 2px;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+
+        .btn-entrar {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-entrar:hover {
+            border-color: var(--purple-main);
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        /* Modal Pop-up de Promoção */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-card {
+            background: var(--card-bg);
+            border: 1px solid var(--purple-main);
+            box-shadow: 0 10px 30px var(--purple-glow);
+            border-radius: 16px;
+            padding: 24px;
+            width: 90%;
+            max-width: 380px;
+            position: relative;
+            transform: scale(0.8) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+        }
+
+        .popup-overlay.active .popup-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .popup-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .popup-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 18px;
+        }
+
+        /* Título e Texto Principal */
+        .hero {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            background: var(--purple-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px var(--purple-glow);
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Botões Principais */
+        .cta-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .btn-vip {
+            width: 100%;
+            background: var(--purple-gradient);
+            color: #fff;
+            border: none;
+            padding: 18px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px var(--purple-glow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-vip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.6);
+        }
+
+        .btn-previas {
+            width: 100%;
+            background: transparent;
+            color: #fff;
+            border: 1px solid var(--border-color);
+            padding: 14px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .btn-previas:hover {
+            border-color: var(--purple-main);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .pricing-info {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* Benefícios / Bullets */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px 20px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .feature-item {
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feature-item span {
+            color: var(--purple-main);
+        }
+
+        /* Seção de Prévias - Grid com 6 Vídeos */
+        .previews-section {
+            width: 100%;
+            display: none; /* Aparece ao clicar em prévias */
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .thumb-card {
+            position: relative;
+            aspect-ratio: 9/16;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            cursor: pointer;
+        }
+
+        .thumb-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(5px); /* Efeito blur suave para instigar o clique */
+            transition: filter 0.3s, transform 0.3s;
+        }
+
+        .thumb-card:hover img {
+            filter: blur(2px);
+            transform: scale(1.03);
+        }
+
+        /* Botão Play Fingido */
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(138, 43, 226, 0.7);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 15px var(--purple-glow);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .thumb-card:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(168, 85, 247, 0.9);
+        }
+
+        .play-button::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 14px;
+            border-color: transparent transparent transparent #ffffff;
+            margin-left: 3px;
+        }
+
+        .thumb-duration {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            font-size: 11px;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Badges de Estatísticas */
+        .stats-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .stat-badge {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-badge span {
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        .vip-members {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pop-up Geral / Alerta de Bloqueio VIP -->
+    <div class="popup-overlay" id="customPopup">
+        <div class="popup-card">
+            <button class="popup-close" id="closePopup">&times;</button>
+            <div class="popup-title" id="popupTitle">
+                🔥 Promoção de lançamento
+            </div>
+            <div class="popup-desc" id="popupDesc">
+                Assine o plano anual e economize 70%.
+            </div>
+            <button class="btn-vip" onclick="assinarVip()">SE TORNAR VIP AGORA</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+            </div>
+            <button class="btn-entrar" onclick="assinarVip()">Entrar</button>
+        </header>
+
+        <!-- Seção Principal -->
+        <div class="hero">
+            <h1>Meu conteúdo mais<br><span>quente está aqui.</span></h1>
+            <p>Fotos e vídeos que não vão para nenhum outro lugar.</p>
+        </div>
+
+        <!-- Botões de Ação -->
+        <div class="cta-container">
+            <button class="btn-vip" onclick="assinarVip()">SE TORNAR VIP AGORA</button>
+            <button class="btn-previas" id="btnTogglePrevias">
+                Ver prévias <span id="arrowIcon">↓</span>
+            </button>
+        </div>
+
+        <div class="pricing-info">
+            A partir de R$ 1,42/dia · Pix · acesso na hora
+        </div>
+
+        <!-- Benefícios -->
+        <div class="features">
+            <div class="feature-item"><span>✓</span> Pagamento via Pix</div>
+            <div class="feature-item"><span>✓</span> Acesso na hora</div>
+            <div class="feature-item"><span>✓</span> Cancele quando quiser</div>
+        </div>
+
+        <!-- Grid de Prévias: 6 Thumbnails de Vídeo -->
+        <div class="previews-section" id="previewsGrid">
+            <!-- Thumb 1 -->
+            <div class="thumb-card" onclick="bloquearVideo()">
+                <img src="poto1.jpg" alt="Prévia 1" onerror="this.src='https://via.placeholder.com/300x533/161224/8a2be2?text=poto1.jpg'">
+                <div class="play-button"></div>
+                <div class="thumb-duration">02:45</div>
+            </div>
+
+            <!-- Thumb 2 -->
+            <div class="thumb-card" onclick="bloquearVideo()">
+                <img src="poto2.jpg" alt="Prévia 2" onerror="this.src='https://via.placeholder.com/300x533/161224/8a2be2?text=poto2.jpg'">
+                <div class="play-button"></div>
+                <div class="thumb-duration">01:30</div>
+            </div>
+
+            <!-- Thumb 3 -->
+            <div class="thumb-card" onclick="bloquearVideo()">
+                <img src="poto3.jpg" alt="Prévia 3" onerror="this.src='https://via.placeholder.com/300x533/161224/8a2be2?text=poto3.jpg'">
+                <div class="play-button"></div>
+                <div class="thumb-duration">04:12</div>
+            </div>
+
+            <!-- Thumb 4 -->
+            <div class="thumb-card" onclick="bloquearVideo()">
+                <img src="poto4.jpg" alt="Prévia 4" onerror="this.src='https://via.placeholder.com/300x533/161224/8a2be2?text=poto4.jpg'">
+                <div class="play-button"></div>
+                <div class="thumb-duration">03:05</div>
+            </div>
+
+            <!-- Thumb 5 -->
+            <div class="thumb-card" onclick="bloquearVideo()">
+                <img src="poto5.jpg" alt="Prévia 5" onerror="this.src='https://via.placeholder.com/300x533/161224/8a2be2?text=poto5.jpg'">
+                <div class="play-button"></div>
+                <div class="thumb-duration">05:20</div>
+            </div>
+
+            <!-- Thumb 6 -->
+            <div class="thumb-card" onclick="bloquearVideo()">
+                <img src="poto6.jpg" alt="Prévia 6" onerror="this.src='https://via.placeholder.com/300x533/161224/8a2be2?text=poto6.jpg'">
+                <div class="play-button"></div>
+                <div class="thumb-duration">02:15</div>
+            </div>
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="stats-container">
+            <div class="stat-badge">533 <span>FOTOS</span></div>
+            <div class="stat-badge">429 <span>VÍDEOS</span></div>
+            <div class="stat-badge"><div class="online-dot"></div> 234 <span>online</span></div>
+        </div>
+
+        <div class="vip-members">
+            💎 2.490 Membros VIP
+        </div>
+
+        <div class="footer-text">
+            e constantemente atualizado.
+        </div>
+    </div>
+
+    <!-- Scripts do Site -->
+    <script>
+        const popup = document.getElementById('customPopup');
+        const popupTitle = document.getElementById('popupTitle');
+        const popupDesc = document.getElementById('popupDesc');
+        const closeBtn = document.getElementById('closePopup');
+
+        // Animação Pop-up de Desconto ao carregar
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showPopup("🔥 Promoção de lançamento", "Assine o plano anual e economize 70%.");
+            }, 600);
+        });
+
+        function showPopup(title, desc) {
+            popupTitle.innerHTML = title;
+            popupDesc.innerHTML = desc;
+            popup.classList.add('active');
+        }
+
+        // Ação ao tentar dar Play nos Vídeos
+        function bloquearVideo() {
+            showPopup("🔒 Conteúdo Exclusivo VIP", "Para assistir a este vídeo e ter acesso a todo o conteúdo, assine o plano VIP!");
+        }
+
+        // Função de clique no botão VIP
+        function assinarVip() {
+            // Insira aqui o seu link de checkout/pagamento
+            window.location.href = "https://seu-link-de-checkout.com"; 
+        }
+
+        // Fechar Pop-up
+        closeBtn.addEventListener('click', () => popup.classList.remove('active'));
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) popup.classList.remove('active');
+        });
+
+        // Toggle do Grid de Prévias
+        const btnPrevias = document.getElementById('btnTogglePrevias');
+        const previewsGrid = document.getElementById('previewsGrid');
+        const arrowIcon = document.getElementById('arrowIcon');
+
+        btnPrevias.addEventListener('click', () => {
+            if (previewsGrid.style.display === 'grid') {
+                previewsGrid.style.display = 'none';
+                arrowIcon.textContent = '↓';
+            } else {
+                previewsGrid.style.display = 'grid';
+                arrowIcon.textContent = '↑';
+                previewsGrid.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
